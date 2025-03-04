@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sprints_test/presentation/home.dart';
 
 /*
 − Описание назначения класса
@@ -33,92 +34,92 @@ class OnboardingOne extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xff48B2E7), Color(0xff44A9DC), Color(0xff2B6B8B)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Center(
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(32),
+                child: Center(
                   child: Text(
-                    'welcome'.tr(),
+                    'ДОБРО ПОЖАЛОВАТЬ',
                     style: Theme.of(
                       context,
                     ).textTheme.headlineLarge?.copyWith(color: Colors.white),
                     textAlign: TextAlign.center,
                   ),
                 ),
+              ),
 
-                Image.asset('images/onboarding1.png', fit: BoxFit.cover),
+              Image.asset('images/onboarding1.png', fit: BoxFit.cover),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 8,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 8,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).scaffoldBackgroundColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SizedBox(width: 50, height: 7),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).disabledColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SizedBox(width: 25, height: 7),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).disabledColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SizedBox(width: 25, height: 7),
+                  ),
+                ],
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).scaffoldBackgroundColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: SizedBox(width: 50, height: 7),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).disabledColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: SizedBox(width: 25, height: 7),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).disabledColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: SizedBox(width: 25, height: 7),
-                    ),
-                  ],
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => OnboardingTwo(),
-                              ),
-                            );
-                          },
-                          style: TextButton.styleFrom(
-                            backgroundColor:
-                                Theme.of(context).scaffoldBackgroundColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
+                    Expanded(
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => OnboardingTwo(),
                             ),
+                          );
+                        },
+                        style: TextButton.styleFrom(
+                          backgroundColor:
+                              Theme.of(context).scaffoldBackgroundColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                            child: Text(
-                              'start'.tr(),
-                              style: Theme.of(context).textTheme.bodyLarge,
-                            ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                          child: Text(
+                            'Начать',
+                            style: Theme.of(context).textTheme.labelSmall,
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -136,100 +137,103 @@ class OnboardingTwo extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xff48B2E7), Color(0xff44A9DC), Color(0xff2B6B8B)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          body: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Image.asset('images/onboarding2.png', fit: BoxFit.cover),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image.asset('images/onboarding2.png', fit: BoxFit.cover),
 
-                Center(
-                  child: Text(
-                    'lets_start_journey'.tr(),
-                    style: Theme.of(
-                      context,
-                    ).textTheme.headlineLarge?.copyWith(color: Colors.white),
-                    textAlign: TextAlign.center,
+              Column(
+                spacing: 8,
+                children: [
+                  Center(
+                    child: Text(
+                      'Начнем путешествие',
+                      style: Theme.of(
+                        context,
+                      ).textTheme.headlineLarge?.copyWith(color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                ),
 
-                Center(
-                  child: Text(
-                    'collection_explore_now'.tr(),
-                    style: Theme.of(context).textTheme.headlineSmall,
-                    textAlign: TextAlign.center,
+                  Center(
+                    child: Text(
+                      'Умная, великолепная и модная коллекция Изучите сейчас',
+                      style: Theme.of(
+                        context,
+                      ).textTheme.headlineSmall?.copyWith(color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                ),
+                ],
+              ),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 8,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 8,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).disabledColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SizedBox(width: 25, height: 7),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).scaffoldBackgroundColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SizedBox(width: 50, height: 7),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).disabledColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SizedBox(width: 25, height: 7),
+                  ),
+                ],
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).disabledColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: SizedBox(width: 25, height: 7),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).scaffoldBackgroundColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: SizedBox(width: 50, height: 7),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).disabledColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: SizedBox(width: 25, height: 7),
-                    ),
-                  ],
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => OnboardingTwo(),
-                              ),
-                            );
-                          },
-                          style: TextButton.styleFrom(
-                            backgroundColor:
-                                Theme.of(context).scaffoldBackgroundColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
+                    Expanded(
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            '/',
+                            ModalRoute.withName('/'),
+                          );
+                        },
+                        style: TextButton.styleFrom(
+                          backgroundColor:
+                              Theme.of(context).scaffoldBackgroundColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                            child: Text(
-                              'next'.tr(),
-                              style: Theme.of(context).textTheme.bodyLarge,
-                            ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                          child: Text(
+                            'Далее',
+                            style: Theme.of(context).textTheme.bodyLarge,
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -237,16 +241,117 @@ class OnboardingTwo extends StatelessWidget {
   }
 }
 
-class OnboardingThree extends StatefulWidget {
+class OnboardingThree extends StatelessWidget {
   const OnboardingThree({super.key});
 
   @override
-  State<OnboardingThree> createState() => _OnboardingThreeState();
-}
-
-class _OnboardingThreeState extends State<OnboardingThree> {
-  @override
   Widget build(BuildContext context) {
-    return Container();
+    return SafeArea(
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xff48B2E7), Color(0xff44A9DC), Color(0xff2B6B8B)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image.asset('images/onboarding3.png', fit: BoxFit.cover),
+
+              Column(
+                spacing: 8,
+                children: [
+                  Center(
+                    child: Text(
+                      'У Вас Есть Сила, Чтобы',
+                      style: Theme.of(
+                        context,
+                      ).textTheme.headlineLarge?.copyWith(color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+
+                  Center(
+                    child: Text(
+                      'В вашей комнате много красивых и привлекательных растений',
+                      style: Theme.of(
+                        context,
+                      ).textTheme.headlineSmall?.copyWith(color: Colors.white),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                spacing: 8,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).disabledColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SizedBox(width: 25, height: 7),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).disabledColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SizedBox(width: 25, height: 7),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).scaffoldBackgroundColor,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: SizedBox(width: 50, height: 7),
+                  ),
+                ],
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => OnboardingThree(),
+                            ),
+                          );
+                        },
+                        style: TextButton.styleFrom(
+                          backgroundColor:
+                              Theme.of(context).scaffoldBackgroundColor,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                          child: Text(
+                            'Далее',
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

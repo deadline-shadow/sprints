@@ -99,19 +99,19 @@ ThemeData theme = ThemeData(
       fontFamily: "POPPINS",
       fontSize: 16.0,
       fontWeight: FontWeight.bold,
-      color: hintColor,
+      color: textColor,
     ),
     labelMedium: TextStyle(
       fontFamily: "POPPINS",
       fontSize: 16.0,
       fontWeight: FontWeight.w500,
-      color: hintColor,
+      color: textColor,
     ),
     labelSmall: TextStyle(
       fontFamily: "POPPINS",
       fontSize: 16.0,
       fontWeight: FontWeight.w500,
-      color: hintColor,
+      color: textColor,
     ),
     bodyLarge: TextStyle(
       fontFamily: "POPPINS",

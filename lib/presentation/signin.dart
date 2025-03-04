@@ -41,12 +41,12 @@ class _SignInState extends State<SignIn> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "${"welcome".tr()}!",
+                  "Привет!",
                   style: Theme.of(context).textTheme.headlineLarge,
                   textAlign: TextAlign.center,
                 ),
                 Text(
-                  "fill_details_continue_social_media".tr(),
+                  "Заполните Свои Данные Или Продолжите Через Социальные Медиа",
                   style: Theme.of(context).textTheme.bodyMedium,
                   textAlign: TextAlign.center,
                 ),
@@ -55,7 +55,7 @@ class _SignInState extends State<SignIn> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "email".tr(),
+                      "Email",
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     TextField(
@@ -77,7 +77,7 @@ class _SignInState extends State<SignIn> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "password".tr(),
+                      "Пароль",
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     TextField(
@@ -119,7 +119,7 @@ class _SignInState extends State<SignIn> {
                     TextButton(
                       onPressed: () {},
                       child: Text(
-                        "forgot_password".tr(),
+                        "Восстановить",
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ),
@@ -130,12 +130,26 @@ class _SignInState extends State<SignIn> {
                     Expanded(
                       child: TextButton(
                         onPressed: () async {
-                          var email = emailController.text;
                           var password = passwordController.text;
 
                           if (password.isEmpty) {
                             var snackBar = SnackBar(
-                              content: Text("password".tr()),
+                              content: Text("Пароль пуст"),
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.error,
+                            );
+
+                            ScaffoldMessenger.of(
+                              context,
+                            ).showSnackBar(snackBar);
+
+                            return;
+                          }
+
+                          var email = emailController.text;
+                          if (email.isEmpty) {
+                            var snackBar = SnackBar(
+                              content: Text("Email пуст"),
                               backgroundColor:
                                   Theme.of(context).colorScheme.error,
                             );
@@ -149,7 +163,9 @@ class _SignInState extends State<SignIn> {
 
                           if (!isValidEmail(email)) {
                             var snackBar = SnackBar(
-                              content: Text("email".tr()),
+                              content: Text(
+                                "Email не соответствует требованиям",
+                              ),
                               backgroundColor:
                                   Theme.of(context).colorScheme.error,
                             );
@@ -166,7 +182,7 @@ class _SignInState extends State<SignIn> {
                             if (!authorized) {
                               var snackBar = SnackBar(
                                 content: Text(
-                                  "fill_details_continue_social_media".tr(),
+                                  "Авторизация неуспешна, укажите актуальные данные",
                                 ),
                                 backgroundColor:
                                     Theme.of(context).colorScheme.error,
@@ -199,7 +215,7 @@ class _SignInState extends State<SignIn> {
                               16.0,
                             ),
                             child: Text(
-                              "sign_in".tr(),
+                              "Войти",
                               style: Theme.of(context).textTheme.bodyMedium
                                   ?.copyWith(color: Colors.white),
                             ),
@@ -216,7 +232,7 @@ class _SignInState extends State<SignIn> {
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 Text(
-                  "${"new_user_create_account".tr().split('?')[0]}?",
+                  "${"Вы впервые? Создать пользователя".split('?')[0].trim()}?",
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
                 TextButton(
@@ -224,7 +240,7 @@ class _SignInState extends State<SignIn> {
                     Navigator.pushReplacementNamed(context, '/signup');
                   },
                   child: Text(
-                    "new_user_create_account".tr().split('?')[1],
+                    "Вы впервые? Создать пользователя".split('?')[1].trim(),
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
