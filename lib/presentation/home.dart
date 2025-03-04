@@ -207,7 +207,11 @@ class _HomeState extends State<Home> {
                                     ),
                                     child: Container(
                                       color: Colors.white,
-                                      
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                          10.0,
+                                        ),
+                                      ),
                                       child: Padding(
                                         padding: const EdgeInsets.all(16),
                                         child: Text(
