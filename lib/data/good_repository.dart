@@ -18,7 +18,7 @@ class GoodRepository extends IGoodRepository {
     String? description,
     double priceRuble,
     String? picture,
-    String? category,
+    int? categoryId,
   ) {
     // TODO: implement addGood
     throw UnimplementedError();
@@ -42,7 +42,7 @@ class GoodRepository extends IGoodRepository {
 
   @override
   Future<List<GoodModel>> getCategoryGoods(
-    String category,
+    int category,
     int limit,
     int offset,
   ) {
@@ -59,6 +59,18 @@ class GoodRepository extends IGoodRepository {
   @override
   Future<List<GoodModel>> getGoods(int limit, int offset) {
     // TODO: implement getGoods
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<int>> getCategories(int limit, int offset) {
+    // TODO: implement getCategories
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String?> getCategoryName(int categoryId) {
+    // TODO: implement getCategoryName
     throw UnimplementedError();
   }
 }

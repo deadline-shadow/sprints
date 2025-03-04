@@ -33,11 +33,12 @@ ThemeData theme = ThemeData(
     onSurface: textColor,
     brightness: Brightness.light,
   ),
+  cardColor: blockColor,
   disabledColor: disableColor,
   hintColor: hintColor,
   scaffoldBackgroundColor: backgroundColor,
   appBarTheme: AppBarTheme(
-    backgroundColor: blockColor,
+    backgroundColor: backgroundColor,
     foregroundColor: textColor,
     titleTextStyle: TextStyle(
       fontFamily: "NEW PENINIM MT",

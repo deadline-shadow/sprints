@@ -15,7 +15,7 @@ abstract class IGoodRepository {
     String? description,
     double priceRuble,
     String? picture,
-    String? category,
+    int? categoryId,
   );
   Future<void> deleteGood(GoodModel good);
   Future<GoodModel?> getGood(int goodID);
@@ -26,10 +26,12 @@ abstract class IGoodRepository {
     int offset,
   );
   Future<List<GoodModel>> getCategoryGoods(
-    String category,
+    int categoryId,
     int limit,
     int offset,
   );
+  Future<String?> getCategoryName(int categoryId);
+  Future<List<int>> getCategories(int limit, int offset);
 }
 
 class GoodModel {
@@ -38,7 +40,7 @@ class GoodModel {
   String? description;
   double priceRuble;
   String? picture;
-  String? category;
+  int? categoryId;
   DateTime createdAt;
   DateTime? deletedAt;
 
@@ -48,7 +50,7 @@ class GoodModel {
     this.description,
     required this.priceRuble,
     this.picture,
-    this.category,
+    this.categoryId,
     required this.createdAt,
     this.deletedAt,
   });
@@ -63,11 +65,14 @@ abstract class Good {
   String getCategory();
   DateTime getCreatedAt();
   Future<bool> isFavorite();
+  Future<bool> isInCart();
 }
 
 abstract class IGoodService {
   Future<List<Good>> getGoods(int page);
   Future<List<Good>> getCategoryGoods(String category, int page);
+  Future<String?> findCategoryByID(int categoryId);
+  Future<List<String>> getCategories();
   Future<Good?> findGoodByID(int goodID);
   Future<List<Good>> findGoodsContaining(String text, int page);
 }

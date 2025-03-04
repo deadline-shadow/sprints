@@ -35,4 +35,16 @@ class GoodService extends IGoodService {
     // TODO: implement getGoods
     throw UnimplementedError();
   }
+
+  @override
+  Future<String?> findCategoryByID(int categoryId) {
+    // TODO: implement findCategoryByID
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<String>> getCategories() {
+    // TODO: implement getCategories
+    throw UnimplementedError();
+  }
 }
