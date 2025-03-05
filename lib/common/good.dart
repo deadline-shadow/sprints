@@ -64,8 +64,8 @@ abstract class Good {
   String getPicture();
   String getCategory();
   DateTime getCreatedAt();
-  Future<bool> isFavorite();
-  Future<bool> isInCart();
+  bool isFavorite();
+  bool isInCart();
 }
 
 abstract class IGoodService {

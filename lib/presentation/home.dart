@@ -1,3 +1,5 @@
+import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sprints_test/common/good.dart';
@@ -196,7 +198,6 @@ class _HomeState extends State<Home> {
                         }
 
                         return SingleChildScrollView(
-                          //use SingleChildScrollView to allow natural height
                           scrollDirection: Axis.horizontal,
                           child: Row(
                             children:
@@ -239,7 +240,139 @@ class _HomeState extends State<Home> {
 
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 4, 16, 4),
-            child: Column(children: []),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Популярное'),
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    return FutureBuilder(
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) {
+                          return CircularProgressIndicator();
+                        }
+
+                        return SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children:
+                                snapshot.data!.map((item) {
+                                  return GoodCard(
+                                    good: item,
+                                    onFavorite: (id, isFavorite) {},
+                                    onCart: (id, isInCart) {},
+                                  );
+                                }).toList(),
+                          ),
+                        );
+                      },
+                      future: widget.goodService.getCategoryGoods("Popular", 0),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class GoodCard extends StatelessWidget {
+  final Good good;
+
+  final Function(int id, bool isFavorite)? onFavorite;
+  final Function(int id, bool isInCart)? onCart;
+
+  const GoodCard({super.key, required this.good, this.onFavorite, this.onCart});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Image with overlay buttons
+          ClipRRect(
+            borderRadius: const BorderRadius.all(Radius.circular(16)),
+            child: Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 100,
+                        width: 130,
+                        color: Theme.of(context).cardColor,
+                        child: Image.asset(
+                          'images/onboarding3.png',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      const Text('Product Title'),
+                      const SizedBox(height: 8),
+                      const Text('₽99.99'),
+                    ],
+                  ),
+                ),
+
+                Positioned(
+                  top: 8,
+                  left: 8,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).scaffoldBackgroundColor,
+                      shape: BoxShape.circle,
+                    ),
+                    child: IconButton(
+                      icon:
+                          good.isFavorite()
+                              ? Icon(
+                                Icons.favorite,
+                                color: Theme.of(context).colorScheme.error,
+                              )
+                              : Icon(
+                                Icons.favorite_border,
+                                color: Theme.of(context).hintColor,
+                              ),
+                      color: Colors.black,
+                      padding: EdgeInsets.zero,
+                      onPressed: () async {
+                        if (onFavorite != null) {
+                          onFavorite!(good.getID(), !good.isFavorite());
+                        }
+                      },
+                    ),
+                  ),
+                ),
+
+                Positioned(
+                  bottom: -16,
+                  right: -16,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 12, 12),
+                      child: IconButton(
+                        icon: const Icon(Icons.add, color: Colors.white),
+                        onPressed: () {
+                          if (onCart != null) {
+                            onCart!(good.getID(), !(good.isInCart()));
+                          }
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

@@ -103,15 +103,15 @@ class GoodServiceMock implements IGoodService {
 
   @override
   Future<List<Good>> getCategoryGoods(String category, int page) async {
-    if (category == "Populer") {
-      return [GoodMock()];
+    if (category == "Popular") {
+      return [GoodMock(), GoodMock()];
     }
     return [];
   }
 
   @override
   Future<List<Good>> getGoods(int page) async {
-    return [GoodMock()];
+    return [GoodMock(), GoodMock()];
   }
 }
 
@@ -152,12 +152,12 @@ class GoodMock implements Good {
   }
 
   @override
-  Future<bool> isFavorite() async {
+  bool isFavorite() {
     return false;
   }
 
   @override
-  Future<bool> isInCart() async {
+  bool isInCart() {
     return false;
   }
 }
